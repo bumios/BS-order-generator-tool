@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BS Order Generator</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>BS Order Generator</h1>
+    <p class="muted">Dán link Google Sheet (phải bật chia sẻ "Ai có link đều xem được") rồi bấm <b>Tạo file</b>.</p>
+  </header>
+
+  <main>
+    <!-- Nhập link -->
+    <section class="card">
+      <label for="sheet-url">Link Google Sheet</label>
+      <div class="row">
+        <input id="sheet-url" type="text"
+               placeholder="https://docs.google.com/spreadsheets/d/…" />
+      </div>
+      <div class="row actions">
+        <button id="btn-generate" class="primary big">Tạo file xlsx cho BS</button>
+        <button id="btn-download" disabled>Tải file</button>
+        <span id="file-name" class="muted"></span>
+      </div>
+    </section>
+
+    <!-- Tiến trình -->
+    <section class="card" id="card-progress" hidden>
+      <h2>Tiến trình</h2>
+      <ol id="step-list" class="steps"></ol>
+    </section>
+
+    <!-- Kết quả -->
+    <section class="card" id="card-result" hidden>
+      <h2 id="result-summary"></h2>
+      <p id="result-note" class="muted"></p>
+      <div id="order-list"></div>
+    </section>
+  </main>
+
+  <div id="toast" hidden></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/xlsx-populate@1.21.0/browser/xlsx-populate.js"></script>
+  <script src="https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js"></script>
+  <script src="core.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

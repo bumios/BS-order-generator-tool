@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BS Order Generator</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>BS Order Generator</h1>
+    <div id="auth-status" class="pill"></div>
+  </header>
+
+  <main>
+    <!-- Bước 1: nguồn dữ liệu -->
+    <section class="card">
+      <h2>1. Nguồn dữ liệu</h2>
+      <div class="tabs">
+        <button id="tab-google" class="tab active">Google Sheets</button>
+        <button id="tab-upload" class="tab">Upload file</button>
+      </div>
+
+      <div id="panel-google">
+        <div id="google-login-box">
+          <p id="google-status-text">Đang kiểm tra…</p>
+          <button id="btn-login" class="primary">Đăng nhập Google</button>
+          <button id="btn-logout" class="ghost" hidden>Đăng xuất</button>
+        </div>
+        <div id="google-url-box" hidden>
+          <label for="sheet-url">Dán link hoặc ID của Google Sheet</label>
+          <div class="row">
+            <input id="sheet-url" type="text" placeholder="https://docs.google.com/spreadsheets/d/…" />
+            <button id="btn-load-google" class="primary">Tải sheets</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="panel-upload" hidden>
+        <div class="row">
+          <input id="file-input" type="file" accept=".xlsx,.csv" />
+          <button id="btn-upload" class="primary">Tải lên</button>
+        </div>
+        <p id="upload-status" class="muted"></p>
+      </div>
+    </section>
+
+    <!-- Bước 2: chọn sheet -->
+    <section class="card" id="card-sheets" hidden>
+      <h2>2. Chọn sheet đơn hàng</h2>
+      <p class="muted">Bỏ qua các sheet có tên trùng với danh sách bên dưới (mặc định: <code>Báo giá</code>).</p>
+      <div class="row">
+        <label for="ignore-list">Bỏ qua sheet tên là</label>
+        <input id="ignore-list" type="text" value="Báo giá" />
+      </div>
+      <div id="sheet-list"></div>
+    </section>
+
+    <!-- Bước 3: preview -->
+    <section class="card" id="card-preview" hidden>
+      <h2>3. Xem trước dữ liệu</h2>
+      <div id="preview-list"></div>
+    </section>
+
+    <!-- Bước 4: xuất file -->
+    <section class="card" id="card-generate" hidden>
+      <h2>4. Xuất file</h2>
+      <p id="generate-summary" class="muted"></p>
+      <button id="btn-generate" class="primary big">⬇ Tạo file Excel (2)</button>
+      <p id="generate-status" class="muted"></p>
+    </section>
+  </main>
+
+  <div id="toast" hidden></div>
+  <script src="app.js"></script>
+</body>
+</html>
