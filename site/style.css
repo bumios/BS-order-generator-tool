@@ -24,6 +24,8 @@ header {
   background: var(--card);
   border-bottom: 1px solid var(--line);
 }
+.brand { display: flex; align-items: center; gap: 14px; }
+.brand img { border-radius: 10px; flex-shrink: 0; }
 header h1 { font-size: 20px; margin: 0 0 4px; }
 header p { margin: 0; }
 
